@@ -225,7 +225,7 @@ Button styles.
 <button class="ag-btn ag-btn--primary"><%- name %></button>
 ```
 
-```jade
+```pug
 a.ag-btn
   != name
 button.ag-btn.ag-btn--primary

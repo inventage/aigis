@@ -45,15 +45,15 @@ Created the following files and directories:
 You can choose The following Template engines for generating style guide.
 
 * EJS（`ejs`）
-* Jade（`jade`）
+* Pug（`pug`）
 * Handlebars（`hbs`）
 
 When you run `aigis init`, add `--engine` option.
 
-e.g) choose jade
+e.g) choose pug
 
 ```shell
-$ ./node_modules/.bin/aigis init --engine jade
+$ ./node_modules/.bin/aigis init --engine pug
 ```
 
 ## Config file

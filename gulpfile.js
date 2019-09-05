@@ -1,44 +1,42 @@
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var mocha = require('gulp-mocha');
-var process = require("child_process");
-var exec = process.exec;
-var bs = require("browser-sync");
-var reload = bs.reload;
+const gulp = require('gulp');
+const mocha = require('gulp-mocha');
+const exec = require('child_process').exec;
+const bs = require('browser-sync');
 
-
-var src = {
-  js: ["lib2/**/*.js"],
+const src = {
+  js: ['lib2/**/*.js'],
   tests: ['./test/**/*.js', '!test/{temp,temp/**}']
 };
 
-var index = "./bin/aigis";
+const index = './bin/aigis';
 
-gulp.task("exec:index", function(cb) {
-  exec("node " + index + " ./examples/aigis_config.yml", function(err, stdout, stderr) {
+const execIndex = (cb) => {
+  exec(`node ${index} run -c ./examples/aigis_config.yml`, function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb();
   });
+};
+
+gulp.task('exec:index', execIndex);
+
+gulp.task('watch', function () {
+  return gulp.watch(src.js, ['exec:index']);
 });
 
-gulp.task("watch",function() {
-  return gulp.watch(src.js, ["exec:index"]);
-});
-
-gulp.task("serve", function() {
+gulp.task('serve', function () {
   bs.init({
     server: {
-      baseDir: ["./examples"],
+      baseDir: ['./examples'],
       directory: true
     },
     notify: false,
-    host: "localhost"
+    host: 'localhost'
   });
 });
 
-gulp.task('test', function() {
-  gulp.src('test/**/*.js', {read: false}).pipe(mocha({reporter: 'nyan'}));
+gulp.task('test', () => {
+  return gulp.src('test/**/*.js', {read: false}).pipe(mocha({reporter: 'nyan'}));
 });
 
-gulp.task("default", ["exec:index"]);
+gulp.task('default', execIndex);

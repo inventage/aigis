@@ -32,11 +32,11 @@ dependencies:
 # Index page created from markdown file
 index: ./index.md
 
-# You can choose template engine : ejs, jade, handlebars
+# You can choose template engine : ejs, pug, handlebars
 template_engine: ejs
 
-# The directory containing the tempalte files to generate pages
-# It must contain 'layout.xxx' and 'index.xxx' (.ejs or .jade or .hbs)
+# The directory containing the template files to generate pages
+# It must contain 'layout.xxx' and 'index.xxx' (.ejs or .pug or .hbs)
 template_dir: ./template_ejs
 
 # data passed to the template comes either from the config or by params
@@ -51,7 +51,7 @@ color_palette: true
 #
 transform:
   - html
-#  - jade
+#  - pug
 #  - ejs
 #  - hbs
 #  - coffee
