@@ -4,3 +4,4 @@ node_modules/
 styleguide/
 /template*/
 /aigis_assets/
+.idea/
